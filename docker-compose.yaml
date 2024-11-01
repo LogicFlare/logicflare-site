@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  logicflareclient:
+    container_name: logicflareclient
+    build:
+      context: ./
+      dockerfile: dockerfile
+    volumes:
+      - logicflareclient_v:/logicflareclient_v
+    networks:
+      - logicflareNetwork
+
+  proxy:
+    container_name: proxy
+    build:
+      context: ./
+      dockerfile: dockerfile.proxy
+    ports:
+      - "80:80"
+    networks:
+      - logicflareNetwork
+
+volumes:
+  logicflareclient_v:
+
+networks:
+  logicflareNetwork:
+    external: true

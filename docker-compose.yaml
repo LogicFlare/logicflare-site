@@ -1,26 +1,28 @@
 version: "3.8"
 services:
-  barbeariagomesclient:
-    container_name: barbeariagomesclient
+  logicflareclient:
+    container_name: logicflareclient
     build:
-      context: ./ # Certifique-se de que o contexto aponta para o diretório correto
+      context: ./
       dockerfile: dockerfile
+    volumes:
+      - logicflareclient_v:/logicflareclient_v
     networks:
-      - barbeariaNetwork
+      - logicflareNetwork
 
-  barbeariagomes_proxy:
-    container_name: barbeariagomes_proxy
+  proxy:
+    container_name: proxy
     build:
-      context: ./ # Certifique-se de que o contexto aponta para o diretório correto
+      context: ./
       dockerfile: dockerfile.proxy
     ports:
       - "80:80"
-      - "443:443"
     networks:
-      - barbeariaNetwork
-    depends_on:
-      - barbeariagomesclient
+      - logicflareNetwork
+
+volumes:
+  logicflareclient_v:
 
 networks:
-  barbeariaNetwork:
+  logicflareNetwork:
     external: true

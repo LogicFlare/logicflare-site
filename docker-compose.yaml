@@ -19,8 +19,6 @@ services:
       - "80:80"
     networks:
       logicflareNetwork:
-        external: true
-
 
 volumes:
   logicflareclient_v:

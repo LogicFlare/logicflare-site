@@ -18,7 +18,9 @@ services:
     ports:
       - "80:80"
     networks:
-      - logicflareNetwork
+      logicflareNetwork:
+        external: true
+
 
 volumes:
   logicflareclient_v:
@@ -26,3 +28,4 @@ volumes:
 networks:
   logicflareNetwork:
     external: true
+

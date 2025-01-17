@@ -19,6 +19,8 @@ services:
       - "80:80"
     networks:
       logicflareNetwork:
+    depends_on:
+      - logicflareclient
 
 volumes:
   logicflareclient_v:

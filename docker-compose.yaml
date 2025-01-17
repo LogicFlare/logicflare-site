@@ -9,6 +9,8 @@ services:
       - logicflareclient_v:/logicflareclient_v
     networks:
       - logicflareNetwork
+    ports:
+      - "3000:3000"  # Certifique-se de expor a porta correta
 
   proxy:
     container_name: proxy
@@ -18,7 +20,7 @@ services:
     ports:
       - "80:80"
     networks:
-      logicflareNetwork:
+      - logicflareNetwork
     depends_on:
       - logicflareclient
 
@@ -28,4 +30,3 @@ volumes:
 networks:
   logicflareNetwork:
     external: true
-

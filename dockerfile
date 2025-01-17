@@ -1,10 +1,11 @@
-FROM node:18-alpine AS base
+FROM node:18-alpine AS builder
 
 WORKDIR /app
+
 COPY package.json package-lock.json* ./
+
 RUN npm ci --frozen-lockfile
 
-COPY . . 
-EXPOSE 3000
-# run dev só pra dev
-CMD ["npm", "run", "build"]
+COPY . .
+
+RUN npm run build

@@ -7,9 +7,7 @@ RUN npm ci --frozen-lockfile
 
 COPY . . 
 
-RUN npm run build    
-
-COPY --from=builder /app/dist /usr/share/nginx/html
+RUN npm run build  
 
 EXPOSE 80  
 
